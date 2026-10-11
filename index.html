@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <audio id="bgm" loop>
+    <source src="audio/bgm.mp3" type="audio/mpeg">
+  </audio>
+   
+  <!-- 控制按钮区域 -->
+  <div class="control-panel">
+    <button id="manualControlBtn">手动旋转控制</button>
+    <div class="manual-controls" style="display: none;">
+      <button id="rotateLeft">向左旋转</button>
+      <button id="rotateRight">向右旋转</button>
+      <button id="rotateUp">向上旋转</button>
+      <button id="rotateDown">向下旋转</button>
+      <button id="resetRotation">重置旋转</button>
+      <button id="toggleAuto">切换自动旋转</button>
+    </div>
+    <button id="playMusic">播放音乐</button>
+  </div>
+  
+  <div id="midground" class="wall"></div>
+  <div id="foreground" class="wall"></div> 
+
+  <div class="wrap" id="cube">
+    <img src="images/a.jpg" alt="" class="box">
+    <img src="images/b.jpg" alt="" class="box">
+    <img src="images/c.jpg" alt="" class="box">
+    <img src="images/d.jpg" alt="" class="box">
+    <img src="images/e.jpg" alt="" class="box">
+    <img src="images/f.jpg" alt="" class="box"> 
+    
+    <img src="images/g.jpg" alt="" class="square">
+    <img src="images/h.jpg" alt="" class="square">
+    <img src="images/i.jpg" alt="" class="square">
+    <img src="images/j.jpg" alt="" class="square"> 
+    <img src="images/k.jpg" alt="" class="square">
+    <img src="images/l.jpg" alt="" class="square">
+  </div>
+
+  <script src="js/extra.js"></script>
+</body>
+</html>

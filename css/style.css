@@ -1,0 +1,194 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+html {
+  background: linear-gradient(#032861 0%, #000000 80%);
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* 满天星 */
+.wall {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}
+div#midground {
+  background: url("../img/midground.png");
+  animation: cc 60s linear infinite;
+}
+div#foreground {
+  background: url("../img/foreground.png");
+  animation: cc 50s linear infinite;
+}
+
+@keyframes cc {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1000% 0;
+  }
+}
+
+/* 控制按钮样式 */
+.control-panel {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  text-align: center;
+}
+
+.control-panel button {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 8px 15px;
+  margin: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.control-panel button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.wrap {
+  height: 200px;
+  width: 200px;
+  margin: 250px auto;
+  position: relative;
+  perspective: 2000px;
+  transform-style: preserve-3d;
+  transform: rotateX(20deg) rotateY(30deg);
+  transform-origin: 50% 50% 0;
+  animation: move 6s linear infinite;
+}
+
+/* 大正方形样式 */
+.wrap .box {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  opacity: 0.8;
+  transition: 2s;
+  cursor: pointer;
+  transform-origin: center; /* 新增：确保缩放围绕中心 */
+}
+
+.wrap > img:nth-child(1) {
+  transform: rotateY(0deg) translateZ(100px);
+}
+.wrap > img:nth-child(2) {
+  transform: translateZ(-100px) rotateY(180deg);
+}
+.wrap > img:nth-child(3) {
+  transform: rotateY(90deg) translateZ(100px);
+}
+.wrap > img:nth-child(4) {
+  transform: rotateY(-90deg) translateZ(100px);
+}
+.wrap > img:nth-child(5) {
+  transform: rotateX(90deg) translateZ(100px);
+}
+.wrap > img:nth-child(6) {
+  transform: rotateX(-90deg) translateZ(100px);
+}
+
+/* 小正方形 */
+.wrap .square {
+  display: block;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  cursor: pointer;
+  transform-origin: center; /* 新增：确保缩放围绕中心 */
+}
+
+.wrap > img:nth-child(7) {
+  transform: rotateY(0deg) translateZ(50px);
+}
+.wrap > img:nth-child(8) {
+  transform: translateZ(-50px) rotateY(180deg);
+}
+.wrap > img:nth-child(9) {
+  transform: rotateY(90deg) translateZ(50px);
+}
+.wrap > img:nth-child(10) {
+  transform: rotateY(-90deg) translateZ(50px);
+}
+.wrap > img:nth-child(11) {
+  transform: rotateX(90deg) translateZ(50px);
+}
+.wrap > img:nth-child(12) {
+  transform: rotateX(-90deg) translateZ(50px);
+}
+
+@keyframes move {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+.wrap:hover {
+  cursor: pointer;
+}
+
+.wrap:hover > img:nth-child(1) {
+  transform: rotateY(0deg) translateZ(200px);
+}
+.wrap:hover > img:nth-child(2) {
+  transform: translateZ(-200px) rotateY(180deg);
+}
+.wrap:hover > img:nth-child(3) {
+  transform: rotateY(90deg) translateZ(200px);
+}
+.wrap:hover > img:nth-child(4) {
+  transform: rotateY(-90deg) translateZ(200px);
+}
+.wrap:hover > img:nth-child(5) {
+  transform: rotateX(90deg) translateZ(200px);
+}
+.wrap:hover > img:nth-child(6) {
+  transform: rotateX(-90deg) translateZ(200px);
+}
+
+/* 爆炸效果 */
+.explode .wrap > img {
+  animation: explode 2s forwards;
+}
+
+@keyframes explode {
+  0% {
+    transform: rotateX(var(--rx)) rotateY(var(--ry)) translateZ(0);
+  }
+  100% {
+    transform: rotateX(var(--rx)) rotateY(var(--ry)) translateZ(500px);
+    opacity: 0;
+  }
+}
+
+#hint {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 3em;
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: 100;
+}
